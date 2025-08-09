@@ -19,7 +19,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::342360442241:role/GitHubActionsRole
-          aws-region: us-east-1
+          aws-region: ap-south-1
 
       - name: Login to ECR
         env:
@@ -30,10 +30,10 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           docker build -t myapp ./app
-          docker tag myapp:latest 342360442241.dkr.ecr.us-east-1.amazonaws.com/myapp-repo:latest
-          docker push 342360442241.dkr.ecr.ap-south-1.amazonaws.com/myapp-repo:latest
+          docker tag myapp:latest 342360442241.dkr.ecr.us-east-1.amazonaws.com/myapp-repo-1:latest
+          docker push 342360442241.dkr.ecr.ap-south-1.amazonaws.com/myapp-repo-1:latest
 
       - name: Force new ECS deployment
         run: |
-          aws ecs update-service --cluster myapp-cluster --service myapp-service --force-new-deployment --region us-east-1
+          aws ecs update-service --cluster myapp-cluster --service myapp-service --force-new-deployment --region ap-south-1
 
