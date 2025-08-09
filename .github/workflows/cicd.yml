@@ -30,7 +30,7 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           docker build -t myapp ./app
-          docker tag myapp:latest <AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/myapp-repo:latest
+          docker tag myapp:latest 342360442241.dkr.ecr.us-east-1.amazonaws.com/myapp-repo:latest
           docker push 342360442241.dkr.ecr.ap-south-1.amazonaws.com/myapp-repo:latest
 
       - name: Force new ECS deployment
