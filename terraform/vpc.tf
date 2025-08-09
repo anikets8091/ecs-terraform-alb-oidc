@@ -4,7 +4,7 @@ resource "aws_vpc" "asd" {
 }
 
 resource "aws_subnet" "public_a" {
-  vpc_id                  = aws_vpc.main.id
+  vpc_id                  = aws_vpc.asd.id
   cidr_block              = "10.0.1.0/24"
   availability_zone       = "${var.region}a"
   map_public_ip_on_launch = true
@@ -12,7 +12,7 @@ resource "aws_subnet" "public_a" {
 }
 
 resource "aws_subnet" "public_b" {
-  vpc_id                  = aws_vpc.main.id
+  vpc_id                  = aws_vpc.asd.id
   cidr_block              = "10.0.2.0/24"
   availability_zone       = "${var.region}b"
   map_public_ip_on_launch = true
@@ -20,11 +20,11 @@ resource "aws_subnet" "public_b" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.asd.id
 }
 
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.asd.id
 }
 
 resource "aws_route" "internet_access" {
