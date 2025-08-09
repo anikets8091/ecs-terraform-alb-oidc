@@ -1,6 +1,6 @@
 resource "aws_security_group" "ecs_sg" {
   name   = "ecs-sg"
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.asd.id
 
   ingress {
     description = "allow http"
@@ -30,7 +30,7 @@ resource "aws_lb_target_group" "app_tg" {
   name        = "app-tg"
   port        = 80
   protocol    = "HTTP"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.asd.id
   target_type = "ip"
   health_check {
     path                = "/"
